@@ -1,0 +1,92 @@
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.app-container {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  backdrop-filter: brightness(0.8);
+}
+
+.center-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-family:fantasy;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: hsl(345, 65%, 75%);
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.center-button:hover {
+  background-color: hsl(350, 60%, 60%);
+}
+
+.catalogue h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.wallpaper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.wallpaper-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.wallpaper-item:hover {
+  transform: scale(1.03);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.wallpaper-item img {
+  width: 100%;
+  border-radius: 8px;
+  height: auto;
+}
+
+.wallpaper-item p {
+  margin-top: 0.5rem;
+  font-weight:bold;
+}
+
+.back-button {
+  margin-top: 2rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-family:fantasy;
+  background-color: hsl(345, 65%, 75%);
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: hsl(350, 60%, 60%);
+}
