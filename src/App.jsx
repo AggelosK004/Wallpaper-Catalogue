@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import Button from './components/Button';
 import './index.css';
-import backgroundImage from './assets/mountains-moon.jpg';
+import backgroundImage from './assets/lightbackground.jpg';
+import darkBackground from './assets/darkbackground.jpg';  // ← your darker image
 import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
   const [showCatalogue, setShowCatalogue] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
-  const wallpapers = [
-    {
-      name: 'Mountains',
+  const wallpapers = [ {name: 'Mountains',
       url: 'https://www.pexels.com/search/mountains/',
       thumbnail: 'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&h=200',
     },
@@ -27,14 +27,24 @@ function App() {
       name: 'Stars',
       url: 'https://www.pexels.com/search/stars/',
       thumbnail: 'https://images.pexels.com/photos/32237/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=200',
-    },
-  ];
+    }, ];
+
+  // choose which background to show
+  const currentBg = darkMode ? darkBackground : backgroundImage;
 
   return (
     <div
       className="app-container"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url(${currentBg})` }}
     >
+      {/* Theme toggle button, fixed top-right */}
+      <button
+        className="theme-toggle-button"
+        onClick={() => setDarkMode(prev => !prev)}
+      >
+        {darkMode ? 'Light Mode' : 'Dark Mode'}
+      </button>
+
       <AnimatePresence mode="wait">
         {!showCatalogue ? (
           <motion.div
@@ -55,22 +65,25 @@ function App() {
             transition={{ duration: 0.5 }}
             className="catalogue"
           >
-            <h2>Wallpaper Catalogue</h2>
+            {/* …your catalogue markup… */}
             <div className="wallpaper-grid">
-              {wallpapers.map((wallpaper, index) => (
+              {wallpapers.map((w, i) => (
                 <a
-                  key={index}
-                  href={wallpaper.url}
+                  key={i}
+                  href={w.url}
                   target="_blank"
                   rel="noreferrer"
                   className="wallpaper-item"
                 >
-                  <img src={wallpaper.thumbnail} alt={wallpaper.name} />
-                  <p>{wallpaper.name}</p>
+                  <img src={w.thumbnail} alt={w.name} />
+                  <p>{w.name}</p>
                 </a>
               ))}
             </div>
-            <button className="back-button" onClick={() => setShowCatalogue(false)}>
+            <button
+              className="back-button"
+              onClick={() => setShowCatalogue(false)}
+            >
               Go Back
             </button>
           </motion.div>
