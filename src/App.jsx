@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import Button from './components/Button';
 import './index.css';
 import backgroundImage from './assets/lightbackground.jpg';
-import darkBackground from './assets/darkbackground.jpg';  // ← your darker image
+import darkBackground from './assets/darkbackground.jpg';  
 import { motion, AnimatePresence } from 'framer-motion';
+import { Provider } from "@/components/ui/provider"; 
 
 function App() {
   const [showCatalogue, setShowCatalogue] = useState(false);
+  
   const [darkMode, setDarkMode] = useState(false);
 
   const wallpapers = [ {name: 'Mountains',
@@ -29,7 +31,7 @@ function App() {
       thumbnail: 'https://images.pexels.com/photos/32237/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=200',
     }, ];
 
-  // choose which background to show
+
   const currentBg = darkMode ? darkBackground : backgroundImage;
 
   return (
@@ -37,7 +39,7 @@ function App() {
       className="app-container"
       style={{ backgroundImage: `url(${currentBg})` }}
     >
-      {/* Theme toggle button, fixed top-right */}
+      
       <button
         className="theme-toggle-button"
         onClick={() => setDarkMode(prev => !prev)}
@@ -65,7 +67,7 @@ function App() {
             transition={{ duration: 0.5 }}
             className="catalogue"
           >
-            {/* …your catalogue markup… */}
+         
             <div className="wallpaper-grid">
               {wallpapers.map((w, i) => (
                 <a
