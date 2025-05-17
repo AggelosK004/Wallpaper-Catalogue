@@ -4,7 +4,6 @@ import './index.css';
 import backgroundImage from './assets/lightbackground.jpg';
 import darkBackground from './assets/darkbackground.jpg';  
 import { motion, AnimatePresence } from 'framer-motion';
-import { Provider } from "@/components/ui/provider"; 
 
 function App() {
   const [showCatalogue, setShowCatalogue] = useState(false);
